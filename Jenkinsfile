@@ -10,19 +10,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                script {
-                    def mvnCommand = fileExists('mvnw.cmd') ? 'mvnw.cmd' : 'mvn'
-                    bat "${mvnCommand} clean package"
-                }
+                bat 'mvnw.cmd clean package'
             }
         }
 
         stage('Test') {
             steps {
-                script {
-                    def mvnCommand = fileExists('mvnw.cmd') ? 'mvnw.cmd' : 'mvn'
-                    bat "${mvnCommand} test"
-                }
+                bat 'mvnw.cmd test'
             }
         }
     }
