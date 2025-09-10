@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven'     // the Maven installation name you added in Jenkins
+        git 'Default'     // optional, if you defined Git in Jenkins tools
+    }
+
     stages {
         stage('Clone') {
             steps {
@@ -10,13 +15,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'mvnw.cmd clean package'
+                bat 'mvn clean package'
             }
         }
 
         stage('Test') {
             steps {
-                bat 'mvnw.cmd test'
+                bat 'mvn test'
             }
         }
     }
