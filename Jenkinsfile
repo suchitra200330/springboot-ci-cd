@@ -11,7 +11,6 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    // Check if mvnw.cmd exists, otherwise fall back to system-installed Maven
                     def mvnCommand = fileExists('mvnw.cmd') ? 'mvnw.cmd' : 'mvn'
                     bat "${mvnCommand} clean package"
                 }
@@ -21,7 +20,6 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    // Check if mvnw.cmd exists, otherwise fall back to system-installed Maven
                     def mvnCommand = fileExists('mvnw.cmd') ? 'mvnw.cmd' : 'mvn'
                     bat "${mvnCommand} test"
                 }
